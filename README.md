@@ -3,9 +3,8 @@
 This is a simple Laravel based application that allows users to create and share secure secret links.
 User can open the link once if the link is not expired.
 
-
+## Watch the demo
 [Watch the demo video](public/images/video.mp4)
-
 
 ## Tech Stack
 - PHP
@@ -67,6 +66,7 @@ Before you begin, make sure you have the following tools installed:
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
+## Screenshots
 ![React To Do App](public/images/1.png)
 ![React To Do App](public/images/2.png)
 ![React To Do App](public/images/3.png)
