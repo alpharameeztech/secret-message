@@ -11,6 +11,30 @@
                 <div class="p-6 text-gray-900">
                     {{ __("Prepare an encrypted message") }}
                 </div>
+
+                <!-- Success Message with Copy Link Functionality -->
+                <div class="space-y-6 px-8">
+                    @if (session('success'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
+                            @php
+                                // Extract the URL from the success message
+                                $message = session('success');
+                                preg_match('/href="([^"]+)"/', $message, $matches);
+                                $url = $matches[1] ?? null;
+                            @endphp
+
+                            @if ($url)
+                                <div class="mt-4">
+                                    <input type="text" value="{{ $url }}" id="copyLink" readonly class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-opacity-50">
+                                    <button onclick="copyToClipboard()" id="copyButton" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+                                        Copy Link
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
+                    @endif
+                </div>
+
                 <!-- Form Start -->
                 <form action="{{ route('message.store') }}" method="POST" class="space-y-6 px-8">
                     @csrf
@@ -41,6 +65,7 @@
                         @enderror
                     </div>
 
+                    <!-- Expiry Time Input -->
                     <div>
                         <label for="expires_in" class="block text-sm font-medium text-gray-700">
                             Expiry time (in minutes)
@@ -51,6 +76,7 @@
                         @enderror
                     </div>
 
+                    <!-- Submit Button -->
                     <div class="py-8 flex justify-center">
                         <button type="submit" class="w-1/2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Create a secret link
