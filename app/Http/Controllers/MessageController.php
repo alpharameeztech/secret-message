@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MessageRequest;
-use App\Models\User;
 use App\Services\Contracts\MessageServiceInterface;
-use Illuminate\Http\Request;
+use App\Services\Contracts\RecipientServiceInterface;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
     protected MessageServiceInterface $messageService;
-    public function __construct(MessageServiceInterface $messageService)
+    protected RecipientServiceInterface $recipientService;
+
+    public function __construct(MessageServiceInterface $messageService, RecipientServiceInterface $recipientService)
     {
         $this->messageService = $messageService;
+        $this->recipientService = $recipientService;
     }
 
     public function index()
@@ -24,12 +26,11 @@ class MessageController extends Controller
 
     public function create()
     {
-        return view('message.create', [
-            'users' => User::get()
-        ]);
+        $users = $this->recipientService->getRecipientsExcludingAuthenticated();
+        return view('message.create', compact('users'));
     }
 
-    public function store(MessageRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(MessageRequest $request)
     {
         $message = $this->messageService->createMessage($request->all());
 
@@ -49,5 +50,4 @@ class MessageController extends Controller
         $messages = $this->messageService->getUnreadMessages(Auth::id());
         return view('message.unread', compact('messages'));
     }
-
 }
