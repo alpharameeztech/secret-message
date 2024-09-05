@@ -1,6 +1,7 @@
 # Use the official PHP image as the base image
 FROM php:8.2-fpm
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -18,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     nodejs \
     npm
 
+# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 # Install Composer
