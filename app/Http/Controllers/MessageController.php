@@ -29,13 +29,19 @@ class MessageController extends Controller
         ]);
     }
 
-    public function store(MessageRequest $request)
+    public function store(MessageRequest $request): \Illuminate\Http\RedirectResponse
     {
         $message = $this->messageService->createMessage($request->all());
 
         $messageUrl = route('message.read', ['identifier' => $message->identifier]);
 
         return redirect()->back()->with('success', 'Message created successfully! Share this link: <a href="' . $messageUrl . '">' . $messageUrl . '</a>');
+    }
+
+    public function readMessage($identifier)
+    {
+        $result = $this->messageService->readMessage($identifier);
+        return view('message.read', $result);
     }
 
 }
