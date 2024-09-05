@@ -14,12 +14,14 @@ class MessageController extends Controller
 
     }
 
-    public function create(MessageRequest $request)
+    public function create()
     {
-
+        return view('message.create', [
+            'users' => User::get()
+        ]);
     }
 
-    public function store()
+    public function store(MessageRequest $request)
     {
 
     }
