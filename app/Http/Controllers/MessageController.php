@@ -44,4 +44,10 @@ class MessageController extends Controller
         return view('message.read', $result);
     }
 
+    public function unreadMessages()
+    {
+        $messages = $this->messageService->getUnreadMessages(Auth::id());
+        return view('message.unread', compact('messages'));
+    }
+
 }

@@ -9,7 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <!-- Table displaying messages -->
                     <table class="min-w-full divide-y divide-gray-200 mt-6">
                         <thead class="bg-gray-50">
                         <tr>
@@ -54,9 +53,6 @@
                                     @else
                                         <span class="text-gray-500">N/A</span>
                                     @endif
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <!-- Additional actions (if needed) -->
                                 </td>
                             </tr>
                         @endforeach
