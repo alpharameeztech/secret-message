@@ -17,4 +17,20 @@ class Message extends Model
         'expires_at',
         'opened_at',
     ];
+
+     protected $casts = [
+        'expires_at' => 'datetime',
+        'opened_at' => 'datetime',
+    ];
+
+
+    public function sender(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    public function recipient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'recipient_id');
+    }
 }
