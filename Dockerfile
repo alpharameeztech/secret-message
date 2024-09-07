@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     libzip-dev \
     libpq-dev \
-    netcat-openbsd \
     nodejs \
-    npm
+    npm \
+    netcat-openbsd
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
@@ -34,7 +34,7 @@ COPY . .
 # Install application dependencies (PHP)
 RUN composer install
 
-# Install npm dependencies (Node.js)
+# Install npm dependencies (Node.js for Vite)
 RUN npm install
 
 # Copy the entrypoint script

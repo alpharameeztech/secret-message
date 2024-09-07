@@ -51,11 +51,25 @@ This will log you in the app.
 ## Run without Docker
 - Just run the following command
 ```bash
-php artisan serve
-yarn run dev
+composer install
+cp .env.example .env
 php artisan migrate
 php artisan db:seed
+php artisan serve
+yarn install
+yarn run dev
 ````
+
+- Make sure your MYSQL env variables are correct i.e
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
 URL:
 http://127.0.0.1:8000/
 
