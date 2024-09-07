@@ -4,7 +4,9 @@ This is a simple Laravel based application that allows users to create and share
 User can open the link once if the link is not expired.
 
 ## Watch the demo
-[Watch the demo video](public/images/video.mp4)
+[Click here to watch the demo video](public/images/video.mp4)
+
+![Demo](public/images/video.gif)
 
 ## Tech Stack
 - PHP
