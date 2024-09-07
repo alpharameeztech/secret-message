@@ -35,7 +35,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-4 w-full fixed bottom-0 left-0">
         <p>
-            Created by <a target="_blank" class="underline font-bold" href="https://www.linkedin.com/in/rameez-israr/">Rameez Israr</a><span style="font-size: 2em;">🏇</span>  with <span style="font-size: 1.5em;">❤️</span>--}}
+            Created by <a target="_blank" class="underline font-bold" href="https://www.linkedin.com/in/rameez-israr/">Rameez Israr</a><span style="font-size: 2em;">🏇</span>  with <span style="font-size: 1.5em;">❤️</span>
         </p>
     </footer>
 
